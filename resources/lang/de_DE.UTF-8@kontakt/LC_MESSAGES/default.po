@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Engelsystem\n"
 "POT-Creation-Date: 2019-04-28 15:23+0200\n"
-"PO-Revision-Date: 2019-06-12 11:49+0200\n"
+"PO-Revision-Date: 2019-06-12 16:38+0200\n"
 "Last-Translator: msquare <msquare@notrademark.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -101,35 +101,35 @@ msgstr "Event Einstellungen"
 
 #: includes/controller/event_config_controller.php:53
 msgid "Please enter buildup start date."
-msgstr "Bitte gib das Aufbau Start Datum an."
+msgstr "Bitte gib das Aufbau-Startdatum an."
 
 #: includes/controller/event_config_controller.php:57
 msgid "Please enter event start date."
-msgstr "Bitte gib das Event Start Datum an."
+msgstr "Bitte gib das Event-Startdatum an."
 
 #: includes/controller/event_config_controller.php:61
 msgid "Please enter event end date."
-msgstr "Bitte gib das Event Ende Datum an."
+msgstr "Bitte gib das Event-Enddatum an."
 
 #: includes/controller/event_config_controller.php:65
 msgid "Please enter teardown end date."
-msgstr "Bitte gib das Abbau Ende Datum an."
+msgstr "Bitte gib das Abbau-Enddatum an."
 
 #: includes/controller/event_config_controller.php:71
 msgid "The buildup start date has to be before the event start date."
-msgstr "Das Aufbau Start Datum muss vor dem Event Start Datum liegen."
+msgstr "Das Aufbau-Startdatum muss vor dem Event-Startdatum liegen."
 
 #: includes/controller/event_config_controller.php:76
 msgid "The event start date has to be before the event end date."
-msgstr "Das Event Start Datum muss vor dem Event End Datum liegen."
+msgstr "Das Event-Startdatum muss vor dem Event-Enddatum liegen."
 
 #: includes/controller/event_config_controller.php:81
 msgid "The event end date has to be before the teardown end date."
-msgstr "Das Event Ende Datum muss vor dem Abbau Ende Datum liegen."
+msgstr "Das Event-Enddatum muss vor dem Abbau-Enddatum liegen."
 
 #: includes/controller/event_config_controller.php:86
 msgid "The buildup start date has to be before the teardown end date."
-msgstr "Das Aufbau Start Datum muss vor dem Abbau Ende Datum liegen."
+msgstr "Das Aufbau-Startdatum muss vor dem Abbau-Enddatum liegen."
 
 #: includes/controller/event_config_controller.php:120 includes/pages/user_settings.php:89
 msgid "Settings saved."
@@ -192,7 +192,7 @@ msgid ""
 "do so."
 msgstr ""
 "Du darfst diesen Schichteintrag nicht entfernen. Falls notwendig, frage deinen Supporter oder "
-"im Himmel danach."
+"im Infopoint danach."
 
 #: includes/controller/shift_entries_controller.php:352
 msgid "Shift entry removed."
@@ -669,7 +669,9 @@ msgstr "Dein Konto wurde gelöscht."
 msgid ""
 "Your %s account has been deleted. If you have any questions regarding your account deletion, "
 "please contact heaven."
-msgstr "Dein %s-Konto wurde gelöscht. Wenn Du dazu Fragen hast, kontaktiere bitte den Himmel."
+msgstr ""
+"Dein %s-Konto wurde gelöscht. Wenn Du dazu Fragen hast, kontaktiere bitte die "
+"Helfer*innenkoordination."
 
 #: includes/pages/admin_active.php:13 includes/sys_menu.php:104
 msgid "Active angels"
@@ -1353,23 +1355,23 @@ msgstr "Registrierung ist abgeschaltet."
 
 #: includes/pages/guest_login.php:92
 msgid "Please enter a valid nick."
-msgstr "Gib bitte einen erlaubten Nick an."
+msgstr "Gib bitte einen erlaubten Spitznamen an."
 
 #: includes/pages/guest_login.php:92 includes/pages/guest_login.php:290
 #: includes/view/User_view.php:39
 msgid "Use up to 23 letters, numbers, connecting punctuations or spaces for your nickname."
 msgstr ""
 "Verwende bis zu 23 Buchstaben, Zahlen, verbindende Schriftzeichen (.-_) oder Leerzeichen für "
-"deinen Nick."
+"deinen Spitznamen."
 
 #: includes/pages/guest_login.php:96
 #, php-format
 msgid "Your nick &quot;%s&quot; already exists."
-msgstr "Der Nick &quot;%s&quot; existiert schon."
+msgstr "Der Spitzname &quot;%s&quot; existiert schon."
 
 #: includes/pages/guest_login.php:100 includes/pages/guest_login.php:422
 msgid "Please enter a nickname."
-msgstr "Gib bitte einen Nick an."
+msgstr "Gib bitte einen Spitznamen an."
 
 #: includes/pages/guest_login.php:111
 msgid "E-mail address is already used by another user."
@@ -1613,7 +1615,7 @@ msgstr "News anlegen:"
 #: includes/pages/user_questions.php:11 includes/sys_menu.php:90
 #: includes/view/Questions_view.php:40
 msgid "Ask the Heaven"
-msgstr "Frag den Himmel"
+msgstr "Frag das Team"
 
 #: includes/pages/user_questions.php:55
 msgid "You question was saved."
@@ -1958,37 +1960,37 @@ msgstr "Abbau endet"
 
 #: includes/view/EventConfig_view.php:91
 msgid "Event Name"
-msgstr "Event Name"
+msgstr "Eventname"
 
 #: includes/view/EventConfig_view.php:92
 msgid "Event Name is shown on the start page."
-msgstr "Event Name wird auf der Startseite angezeigt."
+msgstr "Der Eventname wird auf der Startseite angezeigt."
 
 #: includes/view/EventConfig_view.php:93
 msgid "Event Welcome Message"
-msgstr "Event Willkommens-Nachricht"
+msgstr "Event-Willkommensnachricht"
 
 #: includes/view/EventConfig_view.php:96
 msgid "Welcome message is shown after successful registration. You can use markdown."
 msgstr ""
-"Die Willkommens-Nachricht wird nach einer erfolgreichen Registrierung angezeigt. Du kannst "
+"Die Willkommensnachricht wird nach einer erfolgreichen Registrierung angezeigt. Du kannst "
 "Markdown benutzen."
 
 #: includes/view/EventConfig_view.php:100
 msgid "Buildup date"
-msgstr "Aufbau Datum"
+msgstr "Aufbaudatum"
 
 #: includes/view/EventConfig_view.php:101
 msgid "Event start date"
-msgstr "Event Start Datum"
+msgstr "Event-Startdatum"
 
 #: includes/view/EventConfig_view.php:104
 msgid "Teardown end date"
-msgstr "Abbau Ende Datum"
+msgstr "Abbau-Enddatum"
 
 #: includes/view/EventConfig_view.php:105
 msgid "Event end date"
-msgstr "Event Ende Datum"
+msgstr "Event-Enddatum"
 
 #: includes/view/PublicDashboard_view.php:37
 msgid "Angels needed in the next 3 hrs"
@@ -2113,7 +2115,7 @@ msgstr "Kommentar (nur für Dich):"
 
 #: includes/view/ShiftEntry_view.php:151
 msgid "Shift signup"
-msgstr "Schicht Anmeldung"
+msgstr "Schicht-Anmeldung"
 
 #: includes/view/ShiftEntry_view.php:182 includes/view/User_view.php:406
 #: includes/view/User_view.php:408
@@ -2122,7 +2124,7 @@ msgstr "Geschwänzt"
 
 #: includes/view/ShiftEntry_view.php:185
 msgid "Freeload comment (Only for shift coordination):"
-msgstr "Schwänzer Kommentar (Nur für die Schicht-Koordination):"
+msgstr "Schwänzer-Kommentar (Nur für die Schicht-Koordination):"
 
 #: includes/view/ShiftEntry_view.php:190
 msgid "Edit shift entry"
@@ -2555,16 +2557,14 @@ msgid ""
 "You freeloaded at least %s shifts. Shift signup is locked. Please go to heavens desk to be "
 "unlocked again."
 msgstr ""
-"Du hast mindestens %s Schichten geschwänzt. Schicht-Registrierung ist gesperrt. Bitte gehe "
-"zum Himmelsschreibtisch um wieder entsperrt zu werden."
+"Du hast mindestens %s Schichten geschwänzt. Die Schicht-Registrierung ist gesperrt. Bitte "
+"gehe zum Infopoint, um wieder entsperrt zu werden."
 
 #: includes/view/User_view.php:934
 msgid ""
 "You are not marked as arrived. Please go to heaven's desk, get your angel badge and/or tell "
 "them that you arrived already."
-msgstr ""
-"Du bist nicht als angekommen markiert. Bitte gehe zur Himmelsverwaltung, hole Dein Badge ab "
-"und/oder erkläre ihnen, dass Du bereits angekommen bist."
+msgstr "Du bist nicht als angekommen markiert. Bitte gehe zum Infopoint, um dich anzumelden."
 
 #: includes/view/User_view.php:947
 msgid "You need to specify a tshirt size in your settings!"
