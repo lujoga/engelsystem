@@ -213,4 +213,5 @@ return [
     ],
 
     'oidc_provider_url'       => '',
+    'oidc_logout_url'         => '',
 ];

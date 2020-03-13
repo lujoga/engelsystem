@@ -3,6 +3,7 @@
 namespace Engelsystem\Controllers;
 
 use Carbon\Carbon;
+use Engelsystem\Config\Config;
 use Engelsystem\Helpers\Authenticator;
 use Engelsystem\Http\Request;
 use Engelsystem\Http\Response;
@@ -26,6 +27,9 @@ class AuthController extends BaseController
     /** @var Authenticator */
     protected $auth;
 
+    /** @var Config */
+    protected $config;
+
     /** @var array */
     protected $permissions = [
         'login'     => 'login',
@@ -37,17 +41,20 @@ class AuthController extends BaseController
      * @param SessionInterface      $session
      * @param UrlGeneratorInterface $url
      * @param Authenticator         $auth
+     * @param Config                $config
      */
     public function __construct(
         Response $response,
         SessionInterface $session,
         UrlGeneratorInterface $url,
-        Authenticator $auth
+        Authenticator $auth,
+        Config $config
     ) {
         $this->response = $response;
         $this->session = $session;
         $this->url = $url;
         $this->auth = $auth;
+        $this->config = $config;
     }
 
     /**
@@ -110,6 +117,6 @@ class AuthController extends BaseController
     {
         $this->session->invalidate();
 
-        return $this->response->redirectTo($this->url->to('/'));
+        return $this->response->redirectTo($this->config->get('oidc_logout_url') ?: $this->url->to('/'));
     }
 }
