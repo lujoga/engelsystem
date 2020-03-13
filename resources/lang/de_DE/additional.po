@@ -14,6 +14,9 @@ msgstr ""
 "Es wurde kein User gefunden oder das Passwort ist falsch. Probiere es bitte noch einmal. Wenn das Problem "
 "weiterhin besteht, melde dich im Himmel."
 
+msgid "auth.login.oidc"
+msgstr "Login mit OpenID Connect"
+
 msgid "validation.password.required"
 msgstr "Bitte gib ein Passwort an."
 

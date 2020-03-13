@@ -67,6 +67,14 @@
                                 </button>
                             </div>
 
+                            {% if config('oidc_provider_url') is not empty %}
+                                <div class="form-group">
+                                    <a class="btn btn-default btn-lg btn-block" href="#" role="button">
+                                        {{ __('auth.login.oidc') }}
+                                    </a>
+                                </div>
+                            {% endif %}
+
                             <div class="text-center">
                                 <a href="{{ url('/password/reset') }}" class="">
                                     {{ __('I forgot my password') }}

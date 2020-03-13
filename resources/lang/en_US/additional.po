@@ -12,6 +12,9 @@ msgstr ""
 msgid "auth.not-found"
 msgstr "No user was found or password is wrong. Please try again. If you are still having problems, ask Heaven."
 
+msgid "auth.login.oidc"
+msgstr "Login via OpenID Connect"
+
 msgid "validation.password.required"
 msgstr "The password is required."
 

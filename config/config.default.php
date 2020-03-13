@@ -210,5 +210,7 @@ return [
         'Contribution' => 'Please visit [engelsystem/engelsystem](https://github.com/engelsystem/engelsystem) if '
             . 'you want to to contribute, have found any [bugs](https://github.com/engelsystem/engelsystem/issues) '
             . 'or need help.'
-    ]
+    ],
+
+    'oidc_provider_url'       => '',
 ];
