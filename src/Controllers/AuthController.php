@@ -4,13 +4,19 @@ namespace Engelsystem\Controllers;
 
 use Carbon\Carbon;
 use Engelsystem\Config\Config;
+use Engelsystem\Database\Db;
 use Engelsystem\Helpers\Authenticator;
+use Engelsystem\Helpers\OpenIDConnect;
 use Engelsystem\Http\Request;
 use Engelsystem\Http\Response;
 use Engelsystem\Http\UrlGeneratorInterface;
+use Engelsystem\Models\User\PersonalData;
+use Engelsystem\Models\User\Settings;
+use Engelsystem\Models\User\State;
 use Engelsystem\Models\User\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Jumbojett\OpenIDConnectClientException;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class AuthController extends BaseController
@@ -27,12 +33,16 @@ class AuthController extends BaseController
     /** @var Authenticator */
     protected $auth;
 
+    /** @var OpenIDConnect */
+    protected $oidc;
+
     /** @var Config */
     protected $config;
 
     /** @var array */
     protected $permissions = [
         'login'     => 'login',
+        'oidc'      => 'login',
         'postLogin' => 'login',
     ];
 
@@ -41,6 +51,7 @@ class AuthController extends BaseController
      * @param SessionInterface      $session
      * @param UrlGeneratorInterface $url
      * @param Authenticator         $auth
+     * @param OpenIDConnect         $oidc
      * @param Config                $config
      */
     public function __construct(
@@ -48,12 +59,14 @@ class AuthController extends BaseController
         SessionInterface $session,
         UrlGeneratorInterface $url,
         Authenticator $auth,
+        OpenIDConnect $oidc,
         Config $config
     ) {
         $this->response = $response;
         $this->session = $session;
         $this->url = $url;
         $this->auth = $auth;
+        $this->oidc = $oidc;
         $this->config = $config;
     }
 
@@ -68,9 +81,86 @@ class AuthController extends BaseController
     /**
      * @return Response
      */
-    protected function showLogin(): Response
+    public function oidc(): Response
     {
-        $errors = Collection::make(Arr::flatten($this->session->get('errors', [])));
+        try {
+            $this->oidc->getProviderURL();
+        } catch (OpenIDConnectClientException $e) {
+            return $this->showLogin(['auth.oidc.not-available']);
+        }
+
+        $this->oidc->setRedirectURL($this->url->to('/login/oidc'));
+
+        try {
+            $this->oidc->authenticate();
+            $userInfo = json_decode(json_encode($this->oidc->requestUserInfo()), true);
+        } catch (OpenIDConnectClientException $e) {
+            return $this->showLogin(['auth.oidc.error']);
+        }
+
+        $attr = array_merge([
+            'nick'          => 'preferred_username',
+            'mail'          => 'email',
+            'first_name'    => 'given_name',
+            'last_name'     => 'family_name',
+        ], $this->config->get('oidc_attribute_map'));
+        $nick = $userInfo[$attr['nick']] ?? '';
+        $mail = $userInfo[$attr['mail']] ?? '';
+
+        $user = User::whereName($nick)->first() ?: User::whereEmail($mail)->first();
+        if (!$user) {
+            $user = new User([
+                'name'          => $nick,
+                'password'      => '',
+                'email'         => $mail,
+                'api_key'       => '',
+                'last_login_at' => null,
+            ]);
+            $user->save();
+
+            $personalData = new PersonalData([
+                'first_name'            => $userInfo[$attr['first_name']] ?? '',
+                'last_name'             => $userInfo[$attr['last_name']] ?? '',
+                'shirt_size'            => '',
+                'planned_arrival_date'  => null,
+            ]);
+            $personalData->user()
+                ->associate($user)
+                ->save();
+
+            $settings = new Settings([
+                'language'          => $this->session->get('locale'),
+                'theme'             => $this->config->get('theme'),
+                'email_human'       => false,
+                'email_shiftinfo'   => false,
+            ]);
+            $settings->user()
+                ->associate($user)
+                ->save();
+
+            if ($this->config->get('autoarrive')) {
+                $state = new State([
+                    'arrived'       => true,
+                    'arrival_date'  => new Carbon(),
+                ]);
+                $state->user()
+                    ->associate($user)
+                    ->save();
+            }
+
+            DB::insert('INSERT INTO `UserGroups` (`uid`, `group_id`) VALUES (?, -20)', [$user->id]);
+        }
+
+        return $this->finalizeLogin($user);
+    }
+
+    /**
+     * @param array $errors
+     * @return Response
+     */
+    protected function showLogin($errors = []): Response
+    {
+        $errors = Collection::make(Arr::flatten(array_merge($this->session->get('errors', []), $errors)));
         $this->session->remove('errors');
 
         return $this->response->withView(
@@ -100,6 +190,15 @@ class AuthController extends BaseController
             return $this->showLogin();
         }
 
+        return $this->finalizeLogin($user);
+    }
+
+    /**
+     * @param User $user
+     * @return Response
+     */
+    protected function finalizeLogin(User $user): Response
+    {
         $this->session->invalidate();
         $this->session->set('user_id', $user->id);
         $this->session->set('locale', $user->settings->language);
@@ -107,7 +206,7 @@ class AuthController extends BaseController
         $user->last_login_at = new Carbon();
         $user->save(['touch' => false]);
 
-        return $this->response->redirectTo('news');
+        return $this->response->redirectTo('/news');
     }
 
     /**

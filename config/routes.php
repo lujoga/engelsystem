@@ -10,6 +10,7 @@ $route->get('/credits', 'CreditsController@index');
 
 // Authentication
 $route->get('/login', 'AuthController@login');
+$route->get('/login/oidc', 'AuthController@oidc');
 $route->post('/login', 'AuthController@postLogin');
 $route->get('/logout', 'AuthController@logout');
 

@@ -17,6 +17,12 @@ msgstr ""
 msgid "auth.login.oidc"
 msgstr "Login mit OpenID Connect"
 
+msgid "auth.oidc.not-available"
+msgstr "Login mit OpenID Connect ist nicht verfügbar."
+
+msgid "auth.oidc.error"
+msgstr "Fehler bei der Authentifizierung mit OpenID Connect"
+
 msgid "validation.password.required"
 msgstr "Bitte gib ein Passwort an."
 

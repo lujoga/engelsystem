@@ -69,7 +69,7 @@
 
                             {% if config('oidc_provider_url') is not empty %}
                                 <div class="form-group">
-                                    <a class="btn btn-default btn-lg btn-block" href="#" role="button">
+                                    <a class="btn btn-default btn-lg btn-block" href="{{ url('/login/oidc') }}" role="button">
                                         {{ __('auth.login.oidc') }}
                                     </a>
                                 </div>

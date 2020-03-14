@@ -27,6 +27,7 @@ return [
         \Engelsystem\Middleware\SessionHandlerServiceProvider::class,
         \Engelsystem\Http\Validation\ValidationServiceProvider::class,
         \Engelsystem\Http\RedirectServiceProvider::class,
+        \Engelsystem\Helpers\OpenIDConnectServiceProvider::class,
 
         // Additional services
         \Engelsystem\Helpers\VersionServiceProvider::class,

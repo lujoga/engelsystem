@@ -214,4 +214,12 @@ return [
 
     'oidc_provider_url'       => '',
     'oidc_logout_url'         => '',
+    'oidc_client_id'          => '',
+    'oidc_client_secret'      => '',
+    'oidc_attribute_map'      => [
+//        'nick'          => 'preferred_username',
+//        'mail'          => 'email',
+//        'first_name'    => 'given_name',
+//        'last_name'     => 'family_name',
+    ],
 ];

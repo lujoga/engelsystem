@@ -15,6 +15,12 @@ msgstr "No user was found or password is wrong. Please try again. If you are sti
 msgid "auth.login.oidc"
 msgstr "Login via OpenID Connect"
 
+msgid "auth.oidc.not-available"
+msgstr "Login via OpenID Connect is not available."
+
+msgid "auth.oidc.error"
+msgstr "Error while authenticating via OpenID Connect"
+
 msgid "validation.password.required"
 msgstr "The password is required."
 
