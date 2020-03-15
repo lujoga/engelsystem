@@ -18,7 +18,7 @@ return [
     'maintenance'             => (bool)env('MAINTENANCE', false),
 
     // Application name (not the event name!)
-    'app_name'                => env('APP_NAME', 'Helfer*innen'),
+    'app_name'                => env('APP_NAME', 'Engelsystem'),
 
     // Set to development to enable debugging messages
     'environment'             => env('ENVIRONMENT', 'production'),
@@ -32,10 +32,10 @@ return [
     // Footer links
     'footer_items'            => [
         // URL to the angel faq and job description
-        'FAQ'     => env('FAQ_URL', 'https://kontakt-bamberg.de/helfen'),
+        'FAQ'     => env('FAQ_URL', 'https://events.ccc.de/congress/2013/wiki/Static:Volunteers'),
 
         // Contact email address, linked on every page
-        'Contact' => env('CONTACT_EMAIL', 'mailto:helfen@kontakt-bamberg.de'),
+        'Contact' => env('CONTACT_EMAIL', 'mailto:ticket@c3heaven.de'),
     ],
 
     // Link to documentation/help
@@ -47,8 +47,8 @@ return [
         'driver' => env('MAIL_DRIVER', 'mail'),
         'from'   => [
             // From address of all emails
-            'address' => env('MAIL_FROM_ADDRESS', 'noreply@kontakt-bamberg.de'),
-            'name'    => env('MAIL_FROM_NAME', env('APP_NAME', 'Helfer*innen')),
+            'address' => env('MAIL_FROM_ADDRESS', 'noreply@engelsystem.de'),
+            'name'    => env('MAIL_FROM_NAME', env('APP_NAME', 'Engelsystem')),
         ],
 
         'host'       => env('MAIL_HOST', 'localhost'),
@@ -61,7 +61,7 @@ return [
     ],
 
     // Default theme, 1=style1.css
-    'theme'                   => env('THEME', 0),
+    'theme'                   => env('THEME', 1),
 
     // Available themes
     'available_themes'        => [
@@ -104,7 +104,7 @@ return [
     'signup_advance_hours'    => 0,
 
     // Number of hours that an angel has to sign out own shifts
-    'last_unsubscribe'        => 24,
+    'last_unsubscribe'        => 3,
 
     // Define the algorithm to use for `password_verify()`
     // If the user uses an old algorithm the password will be converted to the new format
@@ -115,7 +115,7 @@ return [
     'min_password_length'     => 8,
 
     // Whether the DECT field should be enabled
-    'enable_dect'             => false,
+    'enable_dect'             => true,
 
     // Enables prename and lastname
     'enable_user_name'        => false,
@@ -124,13 +124,13 @@ return [
     'enable_pronoun'          => false,
 
     // Enables the planned arrival/leave date
-    'enable_planned_arrival'  => false,
+    'enable_planned_arrival'  => true,
 
     // Enables the T-Shirt configuration on signup and profile
-    'enable_tshirt_size'      => false,
+    'enable_tshirt_size'      => true,
 
     // Number of shifts to freeload until angel is locked for shift signup.
-    'max_freeloadable_shifts' => 1,
+    'max_freeloadable_shifts' => 2,
 
     // Local timezone
     'timezone'                => env('TIMEZONE', ini_get('date.timezone') ?: 'Europe/Berlin'),
@@ -154,11 +154,12 @@ return [
 
     // Available locales in /locale/
     'locales'                 => [
-        'de_DE.UTF-8@kontakt' => 'Deutsch',
+        'de_DE' => 'Deutsch',
+        'en_US' => 'English',
     ],
 
     // The default locale to use
-    'default_locale'          => env('DEFAULT_LOCALE', 'de_DE.UTF-8@kontakt'),
+    'default_locale'          => env('DEFAULT_LOCALE', 'en_US'),
 
     // Available T-Shirt sizes, set value to null if not available
     'tshirt_sizes'            => [
