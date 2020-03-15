@@ -11,6 +11,8 @@ return [
     'enable_dect'               => false,
     'enable_planned_arrival'    => false,
     'enable_tshirt_size'        => false,
+    'enable_user_name'          => true,
+    'enable_pronoun'            => true,
     'max_freeloadable_shifts'   => 1,
     'locales'                   => [
         'de_DE.UTF-8@kontakt' => 'Deutsch',
